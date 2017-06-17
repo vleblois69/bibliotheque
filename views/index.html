@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+	head
+		title Bibliothèque
+	body
+		h1 Liste des livres
+		ul
+			each livre in liste
+				li
+					p
+						b| Titre : 
+						|#{livre.titre}
+						br
+						b| Auteur : 
+						|#{livre.auteur}
+						br
+						b| ISBN : 
+						|#{livre.ISBN}
+						br
+						b| Date d'achat : 
+						|#{livre.dateAchat}
+						br
+						b| Etat : 
+						|#{livre.etat}
+						br
+						b| Theme : 
+						|#{livre.theme}
+	
