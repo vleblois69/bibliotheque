@@ -2,6 +2,9 @@ doctype html
 html(lang="en")
 	head
 		title Bibliothèque
+		script(src='https://code.jquery.com/jquery-1.12.4.js')
+		script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+		link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
 	body
 		h1 Liste des livres
 		ul
@@ -25,4 +28,43 @@ html(lang="en")
 						br
 						b| Theme : 
 						|#{livre.theme}
+		h1 Ajouter un livre
+		form(action='/books/new' method='POST')
+			| ISBN : 
+			input(type="text" name="isbn" pattern="[0-9]{13}" required) 
+			|  (13 chiffres requis)
+			br
+			br
+			| Titre : 
+			input(type="text" name="titre" required)
+			br
+			br
+			| Auteur : 
+			input(type="text" name="auteur" required)
+			br
+			br
+			| Date d'achat : 
+			input(type="text" id="datepicker" name="dateAchat" required)
+			script.
+				$(function(){
+				$("#datepicker").datepicker()})
+			br
+			br
+			| Etat : 
+			select(name="etat")
+				option(value="Neuf") Neuf
+				option(value="Bon état") Bon état
+				option(value="Abimé") Abimé
+			br
+			br
+			| Theme : 
+			select(name="theme")
+				option(value="Bricolage") Bricolage
+				option(value="Science-Fiction") Science-Fiction
+				option(value="Policier") Policier
+				option(value="Tragédie") Tragédie
+				option(value="Comédie") Comédie
+			br
+			br
+			input(type="submit")
 	
