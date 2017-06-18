@@ -25,4 +25,18 @@ html(lang="en")
 			li
 				b| Theme : 
 				|#{livre.theme}
+		h2 Formulaire de création du prêt
+		form(action='/books/' + livre._id method='POST')
+			| Date de prêt : 
+			input(type="text" id="datepicker" name="dateDePret"  value=pret.dateDePret required)
+			script.
+				$(function(){
+				$("#datepicker").datepicker()})
+			br
+			br
+			| Emprunteur : 
+			input(type="text" name="emprunteur" value=pret.emprunteur required)
+			br
+			br
+			input(type="submit")
 	
