@@ -76,10 +76,10 @@ app.get('/books/:id/edit',function(req,res)
 	});	
 });
 
-app.post('/books/:id', function(req,res,next) //Fonction executée quand l'utilisateur appuye sur le bouton du formulaire de création
+app.get('/books/:id', function(req,res,next) //Fonction executée quand l'utilisateur appuye sur le bouton du formulaire de création d'un pret
 {
 	var idLivre = req.params.id;
-	var pretAjoute = {'dateDePret': req.body.dateDePret, 'emprunteur': req.body.emprunteur, 'idLivre': idLivre, 'enCours': true}; //On instancie un objet en passant aux attributs les valeurs des champs et l'id recupéré dans l'URL
+	var pretAjoute = {'dateDePret': req.query.dateDePret, 'emprunteur': req.query.emprunteur, 'idLivre': idLivre, 'enCours': true}; //On instancie un objet en passant aux attributs les valeurs des champs et l'id recupéré dans l'URL
 	app.db.collection("prets").insert(pretAjoute, null, function(error, result){
 		if (error) throw error;
 		

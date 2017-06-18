@@ -26,7 +26,7 @@ html(lang="en")
 				b| Theme : 
 				|#{livre.theme}
 		h2 Formulaire de création du prêt
-		form(action='/books/' + livre._id method='POST')
+		form(action='/books/' + livre._id method='GET')
 			| Date de prêt : 
 			input(type="text" id="datepicker" name="dateDePret"  value=pret.dateDePret required)
 			script.
