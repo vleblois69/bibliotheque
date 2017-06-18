@@ -22,3 +22,17 @@ Modélisation des données :
 }
 L'attribut "enCours" vaudra "false" quand l'emprunteur aura rendu le livre.
 
+Le projet contient 3 répertoires correspondant aux 3 couches :
+ > Répertoire "data" : c'est ici que sont stockées toutes les données de la base de données
+ > Répertoire "scripts" : contient un script "accueil.js" permettant de lancer l'application et gérant toutes les règles métiers
+ > Répertoire "views" : c'est ici que sont stockés les fichiers html. Il contient :
+	- index.html : page d'accueil affichant la liste des livres et le formulaire de création
+	- livre.html : page affichant les informations d'un seul livre
+
+Pour fonctionner ce projet nécessite l'installation des outils suivants :
+	- mongoDB, la base de données,
+	- node.js, pour l'exécution du javascript
+	- NPM pour installer les extensions nécessaires à savoir : pug, express, consolidate et mongodb (commande : npm install express consolidate pug mongodb)
+
+Pour lancer le projet, lancer d'abord le serveur mongoDB puis executer le script "accueil.js" en tapant : node accueil.js
+
