@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+	head
+		title Bibliothèque
+		script(src='https://code.jquery.com/jquery-1.12.4.js')
+		script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+		link(rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+	body
+		ul
+			li
+				b| Titre : 
+				|#{livre.titre}
+			li
+				b| Auteur : 
+				|#{livre.auteur}
+			li
+				b| ISBN : 
+				|#{livre.ISBN}
+			li
+				b| Date d'achat : 
+				|#{livre.dateAchat}
+			li
+				b| Etat : 
+				|#{livre.etat}
+			li
+				b| Theme : 
+				|#{livre.theme}
+	

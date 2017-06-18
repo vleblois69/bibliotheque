@@ -11,7 +11,6 @@ var app = express(); // Création du serveur express
 app.use(bodyParser())// bodyParser va permettre de faire du POST
 
 var listeLivres; //Tableau qui va contenir tous les livres
-console.log("Creation de la variable listeLivres");
 
 app.engine('html',cons.pug);
 app.set('view engine','html');
@@ -48,6 +47,20 @@ app.get('/books/delete/:id',function(req,res)
 		listeLivres.splice(index,1);
 		res.render("index",{'liste':listeLivres});
 	});
+});
+
+app.get('/books/:id',function(req,res)
+{
+	var id = req.params.id;
+	for(var i=0; i < listeLivres.length; i++)
+	{
+		var livreSelectionne;
+		if(listeLivres[i]._id == id)
+		{
+			livreSelectionne = listeLivres[i];
+		}
+	}
+	res.render("livre",{'livre':livreSelectionne});
 });
 
 
