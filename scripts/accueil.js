@@ -8,9 +8,10 @@ var MongoClient = require('mongodb').MongoClient;
 //Fin des inclusions / import des modules
 
 var app = express(); // Création du serveur express
-app.use(bodyParser())
+app.use(bodyParser())// bodyParser va permettre de faire du POST
 
 var listeLivres; //Tableau qui va contenir tous les livres
+console.log("Creation de la variable listeLivres");
 
 app.engine('html',cons.pug);
 app.set('view engine','html');
@@ -22,10 +23,33 @@ app.get('/books', function(req,res) //Fonction executée quand arrive sur la pag
 	{
 		if (err) throw err;
 		
-		listeLivres = Array.from(result);
+		listeLivres = Array.from(result); //On remplit la liste locale avec les livres retournés par la requête
 	});
 	res.render("index",{'liste':listeLivres});
 });
+
+app.get('/books/delete/:id',function(req,res)
+{
+	var id = req.params.id;
+	var MongoObjectID = require("mongodb").ObjectID;
+	var livreASupprimer = {_id: new MongoObjectID(id)};
+	app.db.collection("livres").remove(livreASupprimer, null, function(error, result)
+	{
+		if (error) throw error;
+		
+		var index;
+		for(var i=0; i < listeLivres.length; i++)
+		{
+			if(listeLivres[i]._id == id)
+			{
+				index = i;
+			}
+		}
+		listeLivres.splice(index,1);
+		res.render("index",{'liste':listeLivres});
+	});
+});
+
 
 app.post('/books/new', function(req,res,next) //Fonction executée quand l'utilisateur appuye sur le bouton du formulaire de création
 {

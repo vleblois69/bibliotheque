@@ -11,23 +11,26 @@ html(lang="en")
 			each livre in liste
 				li
 					p
-						b| Titre : 
-						|#{livre.titre}
-						br
-						b| Auteur : 
-						|#{livre.auteur}
-						br
-						b| ISBN : 
-						|#{livre.ISBN}
-						br
-						b| Date d'achat : 
-						|#{livre.dateAchat}
-						br
-						b| Etat : 
-						|#{livre.etat}
-						br
-						b| Theme : 
-						|#{livre.theme}
+						form(action='/books/delete/' + livre._id)
+							b| Titre : 
+							|#{livre.titre}
+							br
+							b| Auteur : 
+							|#{livre.auteur}
+							br
+							b| ISBN : 
+							|#{livre.ISBN}
+							br
+							b| Date d'achat : 
+							|#{livre.dateAchat}
+							br
+							b| Etat : 
+							|#{livre.etat}
+							br
+							b| Theme : 
+							|#{livre.theme}
+							br
+							input(type='submit' value= 'Supprimer')
 		h1 Ajouter un livre
 		form(action='/books/new' method='POST')
 			| ISBN : 
@@ -66,5 +69,5 @@ html(lang="en")
 				option(value="Comédie") Comédie
 			br
 			br
-			input(type="submit")
+			input(type="submit" value="Ajouter")
 	
